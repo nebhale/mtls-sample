@@ -55,7 +55,7 @@ public class MTLSSampleApplication {
             // @formatter:off
             http
                 .x509()
-                    .subjectPrincipalRegex("OU=app\\:(.*?)(?:,|$)")
+                    .subjectPrincipalRegex("OU=(.*?)(?:,|$)")
                     .and()
                 .authorizeRequests()
                     .anyRequest().authenticated();
