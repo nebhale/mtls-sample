@@ -6,11 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="mtls-sample" />
+        <module name="mtls-sample-client" />
+        <module name="mtls-sample-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="mtls-sample" target="1.8" />
+      <module name="mtls-sample-client" target="1.8" />
+      <module name="mtls-sample-server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

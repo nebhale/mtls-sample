@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/mtls-sample.iml" filepath="$PROJECT_DIR$/mtls-sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client/mtls-sample-client.iml" filepath="$PROJECT_DIR$/client/mtls-sample-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/mtls-sample-server.iml" filepath="$PROJECT_DIR$/server/mtls-sample-server.iml" />
     </modules>
   </component>
 </project>

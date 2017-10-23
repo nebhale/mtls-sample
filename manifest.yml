@@ -1,5 +1,0 @@
----
-applications:
-- name: mtls-sample
-  path: target/mtls-sample-0.0.1-SNAPSHOT.jar
-  buildpack: https://github.com/cloudfoundry/java-buildpack.git
