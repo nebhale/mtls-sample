@@ -21,17 +21,14 @@ import org.springframework.stereotype.Component;
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.X509ExtendedKeyManager;
-import javax.security.auth.x500.X500Principal;
 import java.security.GeneralSecurityException;
-import java.security.Principal;
 import java.security.cert.X509Certificate;
+import java.util.Optional;
 
 @Component
 final class SerialNumberExtractor {
 
     private static final String[] ALGORITHMS = {"RSA", "EC"};
-
-    private static final Principal[] PRINCIPALS = {new X500Principal("CN=Diego Instance Identity Root CA")};
 
     private final X509ExtendedKeyManager keyManager;
 
@@ -44,7 +41,9 @@ final class SerialNumberExtractor {
     }
 
     String getSerialNumber() {
-        String alias = this.keyManager.chooseClientAlias(ALGORITHMS, PRINCIPALS, null);
+        String alias = Optional.ofNullable(this.keyManager.chooseClientAlias(ALGORITHMS, null, null))
+            .orElseThrow(() -> new IllegalStateException("No client certificate configured"));
+
         X509Certificate certificate = this.keyManager.getCertificateChain(alias)[0];
         return certificate.getSerialNumber().toString();
     }
