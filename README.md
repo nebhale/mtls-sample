@@ -6,7 +6,7 @@ This project demonstrates mTLS authentication and authorization when running on 
 This project consists of two applications, a `server` and a `client`.  To properly deploy and configure them, do the following
 
 ```shell
-$ ./mvn clean package
+$ ./mvnw clean package
 
 $ cd server
 $ cf push mtls-sample-server --no-start
