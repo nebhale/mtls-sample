@@ -77,9 +77,9 @@ public class ServerApplication {
 
         private final List<String> adminClientIds;
 
-        WebSecurityConfig(@Value("${mtls.admin-client-ids}") List<String> adminClientIds) {
+        WebSecurityConfig(@Value("${mtls_admin_client_ids}") List<String> adminClientIds) {
             this.adminClientIds = adminClientIds.stream()
-                .map(clientId -> String.format("app:%s", clientId))
+                .map(clientId -> String.format("%s", clientId))
                 .collect(Collectors.toList());
         }
 
@@ -97,7 +97,7 @@ public class ServerApplication {
             // @formatter:off
             http
                 .x509()
-                    .subjectPrincipalRegex("OU=(.*?)(?:,|$)")
+                    .subjectPrincipalRegex("OU=app:(.*?)(?:,|$)")
                     .and()
                 .authorizeRequests()
                     .mvcMatchers("/admin/**").hasRole("ADMIN")
