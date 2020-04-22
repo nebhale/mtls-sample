@@ -55,7 +55,7 @@ public class ClientApplication {
 
         private final String userUri;
 
-        Client(RestOperations restOperations, SerialNumberExtractor serialNumberExtractor, @Value("${mtls.server-route}") String serverRoute) {
+        Client(RestOperations restOperations, SerialNumberExtractor serialNumberExtractor, @Value("${mtls_server_route}") String serverRoute) {
             this.restOperations = restOperations;
             this.serialNumberExtractor = serialNumberExtractor;
             this.adminUri = String.format("https://%s/admin", serverRoute);

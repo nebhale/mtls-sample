@@ -19,14 +19,14 @@ $ cf app mtls-sample-client --guid
 The result of this final command is the client's application id.  This must be configured in the server as an "admin" client id allowing access to the `/admin` endpoint.
 
 ```shell
-$ cf set-env mtls-sample-server MTLS.ADMIN-CLIENT-IDS <CLIENT_GUID>
+$ cf set-env mtls-sample-server MTLS_ADMIN_CLIENT_IDS <CLIENT_GUID>
 $ cf start mtls-sample-server
 ```
 
 At this point, the server has started and is configued to allow calls to `/admin` from the client application.  In the output of this final command is the server's host name (`urls`).  This must be configured in the client as the server route.
 
 ```shell
-$ cf set-env mtls-sample-client MTLS.SERVER-ROUTE <SERVER_ROUTE>
+$ cf set-env mtls-sample-client MTLS_SERVER_ROUTE <SERVER_ROUTE>
 $ cf start mtls-sample-client
 ```
 
@@ -72,11 +72,11 @@ To demonstrate the rejection of a trusted certificate, push the same client to a
 
 ```shell
 $ cf push mtls-sample-client-2 --no-start
-$ cf set-env mtls-sample-client-2 MTLS.SERVER-ROUTE <SERVER_ROUTE>
+$ cf set-env mtls-sample-client-2 MTLS_SERVER_ROUTE <SERVER_ROUTE>
 $ cf start mtls-sample-client-2
 ```
 
-At this point the second lient has started, and is receiving a rejection from the `/admin` endpoint for being unauthorized
+At this point the second client has started, and is receiving a rejection from the `/admin` endpoint for being unauthorized
 
 ```plain
 Requesting /admin with certificate SN 239602280072486236703492394465041616501
